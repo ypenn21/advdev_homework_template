@@ -33,11 +33,11 @@ items:
     source:
       type: "Git"
       git:
-        uri: "https://github.com/ypenn21/advdev_homework_template/tree/master/openshift-tasks"
+        uri: "${REPO}"
     strategy:
       type: "JenkinsPipeline"
       jenkinsPipelineStrategy:
-        jenkinsfilePath: Jenkinsfile
+        jenkinsfilePath: openshift-tasks/Jenkinsfile
 kind: List
 metadata: []" | oc create -f - -n ${GUID}-jenkins
 
