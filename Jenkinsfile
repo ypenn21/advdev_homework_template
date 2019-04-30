@@ -16,7 +16,22 @@ def destApp     = "tasks-green"
 def activeApp   = ""
 
 
-
+#!groovy
+podTemplate(
+  name: "jenkins-agent-appdev",
+  label: "jenkins-agent-appdev",
+  cloud: "openshift",
+  containers: [
+    containerTemplate(
+      name: "jnlp",
+      image: "docker-registry.default.svc:5000/${GUID}-jenkins/jenkins-agent-appdev:latest",
+      resourceRequestMemory: "1Gi",
+      resourceLimitMemory: "2Gi",
+      resourceRequestCpu: "1",
+      resourceLimitCpu: "2"
+    )
+  ]
+) {
 pipeline {
   agent {
     // Using the Jenkins Agent Pod that we defined earlier
@@ -327,4 +342,5 @@ stage('Unit Tests and Code Analysis') {
   }
   
   
+}
 }
