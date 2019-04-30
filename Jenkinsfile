@@ -1,6 +1,5 @@
 // Set your project Prefix
 def prefix      = "9187"
-def GUID      = "9187"
 
 // Set variable globally to be available in all stages
 // Set Maven command to always include Nexus Settings
@@ -14,22 +13,10 @@ def devTag      = "0.0-0"
 def prodTag     = "0.0"
 def destApp     = "tasks-green"
 def activeApp   = ""
+
+
+
 pipeline {
-podTemplate(
-  name: "jenkins-agent-appdev",
-  label: "jenkins-agent-appdev",
-  cloud: "openshift",
-  containers: [
-    containerTemplate(
-      name: "jnlp",
-      image: "docker-registry.default.svc:5000/${GUID}-jenkins/jenkins-agent-appdev:latest",
-      resourceRequestMemory: "1Gi",
-      resourceLimitMemory: "2Gi",
-      resourceRequestCpu: "1",
-      resourceLimitCpu: "2"
-    )
-  ]
-) {
   agent {
     // Using the Jenkins Agent Pod that we defined earlier
     label "jenkins-agent-appdev"
@@ -339,5 +326,4 @@ stage('Unit Tests and Code Analysis') {
   }
   
   
-}
 }
