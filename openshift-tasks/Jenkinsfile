@@ -1,8 +1,8 @@
 #!groovy
 podTemplate(
-  label: "skopeo-pod",
+  name: "jenkins-agent-appdev",
+  label: "jenkins-agent-appdev",
   cloud: "openshift",
-  inheritFrom: "maven",
   containers: [
     containerTemplate(
       name: "jnlp",
