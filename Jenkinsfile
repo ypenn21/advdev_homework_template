@@ -311,8 +311,6 @@ stage('Unit Tests and Code Analysis') {
     //113f779880068878a50de4b7df36808c35
     stage('Switch over to new Version') {
       steps {
-            input "Switch Production?"
-
     echo "Switching Production application to ${destApp}."
     script {
       openshift.withCluster() {
