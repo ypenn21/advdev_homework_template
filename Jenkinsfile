@@ -15,8 +15,6 @@ def prodTag     = "0.0"
 def destApp     = "tasks-green"
 def activeApp   = ""
 
-
-#!groovy
 podTemplate(
   name: "jenkins-agent-appdev",
   label: "jenkins-agent-appdev",
