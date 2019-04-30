@@ -14,7 +14,7 @@ def devTag      = "0.0-0"
 def prodTag     = "0.0"
 def destApp     = "tasks-green"
 def activeApp   = ""
-
+pipeline {
 podTemplate(
   name: "jenkins-agent-appdev",
   label: "jenkins-agent-appdev",
@@ -30,7 +30,6 @@ podTemplate(
     )
   ]
 ) {
-pipeline {
   agent {
     // Using the Jenkins Agent Pod that we defined earlier
     label "jenkins-agent-appdev"
